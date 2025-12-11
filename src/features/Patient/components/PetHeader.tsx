@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pet, Tutor } from '../../../domain/models/pet.model';
-import { Calendar, Cat, User, Phone, ChevronRight, Activity, Percent, ShieldCheck } from 'lucide-react';
+import { CalendarIcon, UserIcon, PhoneIcon, ChevronRightIcon, ChartBarIcon, ReceiptPercentIcon, ShieldCheckIcon } from '@heroicons/react/20/solid';
+import { HeartIcon } from '@heroicons/react/24/solid';
 
 interface PetHeaderProps {
     pet: Pet;
@@ -12,13 +13,13 @@ interface PetHeaderProps {
 export const PetHeader: React.FC<PetHeaderProps> = ({ pet, tutor, onDetailsClick, isAttendanceActive }) => {
     return (
         <header className="bg-white border-b border-surface-border shadow-sm w-full relative z-20" aria-label="Informações do Paciente">
-            <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 py-6">
+            <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 py-4">
 
                 {/* Active Attendance Banner */}
                 {isAttendanceActive && (
-                    <div role="alert" className="mb-6 bg-indigo-50 border border-indigo-100 text-indigo-900 px-5 py-4 rounded-lg flex flex-col sm:flex-row items-start sm:items-center gap-4 text-sm animate-in slide-in-from-top duration-300">
+                    <div role="alert" className="mb-4 bg-indigo-50 border border-indigo-100 text-indigo-900 px-5 py-4 rounded-lg flex flex-col sm:flex-row items-start sm:items-center gap-4 text-sm animate-in slide-in-from-top duration-300">
                         <div className="bg-indigo-100 p-2 rounded-full flex-shrink-0">
-                            <Activity size={18} className="text-indigo-600" />
+                            <ChartBarIcon className="w-5 h-5 text-indigo-600" />
                         </div>
                         <div className="flex-grow">
                             <span className="font-bold block text-indigo-800 text-base">Pet em atendimento médico</span>
@@ -38,7 +39,7 @@ export const PetHeader: React.FC<PetHeaderProps> = ({ pet, tutor, onDetailsClick
                     </div>
                 )}
 
-                <div className="flex flex-col md:flex-row gap-8 items-start">
+                <div className="flex flex-col md:flex-row gap-6 items-start">
 
                     {/* Pet Avatar with Status Ring */}
                     <div className="flex-shrink-0 relative">
@@ -46,14 +47,14 @@ export const PetHeader: React.FC<PetHeaderProps> = ({ pet, tutor, onDetailsClick
                             {pet.image ? (
                                 <img src={pet.image} alt={`Foto de ${pet.name}`} className="w-full h-full object-cover" />
                             ) : (
-                                <Cat size={40} strokeWidth={1.5} />
+                                <HeartIcon className="w-10 h-10" />
                             )}
                         </div>
 
                     </div>
 
                     {/* Main Info Grid */}
-                    <div className="flex-grow grid grid-cols-1 md:grid-cols-12 gap-8 w-full">
+                    <div className="flex-grow grid grid-cols-1 md:grid-cols-12 gap-6 w-full">
 
                         {/* Column 1: Pet Identity */}
                         <div className="md:col-span-4 space-y-3">
@@ -67,10 +68,10 @@ export const PetHeader: React.FC<PetHeaderProps> = ({ pet, tutor, onDetailsClick
                             </div>
 
                             <div className="flex flex-wrap gap-2">
-                                <button className="px-3 py-1.5 border border-gray-200 text-gray-600 bg-gray-50 rounded-md text-xs font-bold hover:bg-gray-100 transition-colors uppercase tracking-wide flex items-center gap-1">
-                                    Mais Informações <ChevronRight size={12} />
+                                <button className="px-3 py-1 border border-gray-200 text-gray-600 bg-gray-50 rounded-md text-xs font-bold hover:bg-gray-100 transition-colors uppercase tracking-wide flex items-center gap-1">
+                                    Mais Informações <ChevronRightIcon className="w-3 h-3" />
                                 </button>
-                                <button className="px-3 py-1.5 border border-indigo-100 text-indigo-700 bg-indigo-50 rounded-md text-xs font-bold hover:bg-indigo-100 transition-colors uppercase tracking-wide">
+                                <button className="px-3 py-1 border border-indigo-100 text-indigo-700 bg-indigo-50 rounded-md text-xs font-bold hover:bg-indigo-100 transition-colors uppercase tracking-wide">
                                     Atualizar peso
                                 </button>
                             </div>
@@ -80,14 +81,14 @@ export const PetHeader: React.FC<PetHeaderProps> = ({ pet, tutor, onDetailsClick
                         <div className="md:col-span-3 space-y-1 py-1">
                             <h3 className="text-xs text-gray-400 font-bold uppercase tracking-widest mb-2">Dados Vitais</h3>
                             <div className="flex items-center gap-3 mb-2">
-                                <div className="bg-gray-100 p-1.5 rounded text-gray-400"><Calendar size={14} /></div>
+                                <div className="bg-gray-100 p-1.5 rounded text-gray-400"><CalendarIcon className="w-3.5 h-3.5" /></div>
                                 <div>
                                     <div className="text-xs text-gray-500">Nascimento</div>
                                     <div className="text-sm font-bold text-gray-900">{pet.birthDate}</div>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <div className="bg-gray-100 p-1.5 rounded text-gray-400"><Activity size={14} /></div>
+                                <div className="bg-gray-100 p-1.5 rounded text-gray-400"><ChartBarIcon className="w-3.5 h-3.5" /></div>
                                 <div>
                                     <div className="text-xs text-gray-500">Idade</div>
                                     <div className="text-sm font-bold text-gray-900">{pet.age}</div>
@@ -99,13 +100,13 @@ export const PetHeader: React.FC<PetHeaderProps> = ({ pet, tutor, onDetailsClick
                         <div className="md:col-span-5 flex flex-col gap-3">
                             <h3 className="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">Cobertura</h3>
                             <div className="flex flex-wrap gap-2">
-                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-sm ring-1 ring-indigo-600/20">
-                                    <ShieldCheck size={12} /> {pet.plan}
+                                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-sm ring-1 ring-indigo-600/20">
+                                    <ShieldCheckIcon className="w-3 h-3" /> {pet.plan}
                                 </span>
-                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-white text-gray-700 border border-gray-200">
-                                    <Percent size={12} className="text-gray-400" /> Coparticipação
+                                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-white text-gray-700 border border-gray-200">
+                                    <ReceiptPercentIcon className="w-3 h-3 text-gray-400" /> Coparticipação
                                 </span>
-                                <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-white text-gray-700 border border-gray-200">
+                                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-white text-gray-700 border border-gray-200">
                                     Rede WeVets + Credenciada
                                 </span>
                             </div>
@@ -122,7 +123,7 @@ export const PetHeader: React.FC<PetHeaderProps> = ({ pet, tutor, onDetailsClick
                                     </div>
                                 </div>
                                 <div className="text-gray-400 group-hover:text-indigo-600 transition-colors">
-                                    <Phone size={16} />
+                                    <PhoneIcon className="w-4 h-4" />
                                 </div>
                             </div>
                         </div>

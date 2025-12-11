@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertTriangle } from 'lucide-react';
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import { Modal } from '../../../../components/ui/Modal';
 import { CartItem } from '../../../../domain/models/cart.model';
 
@@ -57,7 +57,7 @@ export const FinalizeModal: React.FC<FinalizeModalProps> = ({
                 {hasPendingFees && (
                     <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-5 mb-6 animate-in fade-in zoom-in-95 duration-300">
                         <div className="flex gap-2 items-start mb-4">
-                            <AlertTriangle className="text-indigo-600 shrink-0 mt-0.5" size={20} />
+                            <ExclamationTriangleIcon className="text-indigo-600 shrink-0 mt-0.5 w-5 h-5" />
                             <p className="text-indigo-600 font-bold text-base leading-tight">
                                 Atenção! Tutor precisa realizar esses pagamentos antes de finalizar o atendimento
                             </p>

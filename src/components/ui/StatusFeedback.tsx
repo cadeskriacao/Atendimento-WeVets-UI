@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertCircle, FileQuestion, RefreshCw } from 'lucide-react';
+import { ExclamationCircleIcon, QuestionMarkCircleIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
 
 type StatusType = 'error' | 'empty' | 'loading';
 
@@ -22,7 +22,7 @@ export const StatusFeedback: React.FC<StatusFeedbackProps> = ({
 }) => {
     const config = {
         loading: {
-            icon: RefreshCw,
+            icon: ArrowPathIcon,
             defaultTitle: "Carregando...",
             defaultMessage: "Por favor, aguarde.",
             colorClass: "text-indigo-500",
@@ -30,7 +30,7 @@ export const StatusFeedback: React.FC<StatusFeedbackProps> = ({
             iconClass: "animate-spin"
         },
         error: {
-            icon: AlertCircle,
+            icon: ExclamationCircleIcon,
             defaultTitle: "Ocorreu um erro",
             defaultMessage: "Não foi possível carregar os dados. Verifique a conexão.",
             colorClass: "text-red-500",
@@ -38,7 +38,7 @@ export const StatusFeedback: React.FC<StatusFeedbackProps> = ({
             iconClass: ""
         },
         empty: {
-            icon: FileQuestion,
+            icon: QuestionMarkCircleIcon,
             defaultTitle: "Nenhum resultado",
             defaultMessage: "Não encontramos nada com os filtros atuais.",
             colorClass: "text-gray-400",
@@ -52,7 +52,7 @@ export const StatusFeedback: React.FC<StatusFeedbackProps> = ({
     return (
         <div className={`flex flex-col items-center justify-center p-8 text-center h-full min-h-[300px] animate-in fade-in zoom-in duration-300 ${className}`} role="status">
             <div className={`p-4 rounded-full mb-4 ${bgClass}`}>
-                <Icon size={48} className={`${colorClass} ${iconClass}`} />
+                <Icon className={`h-12 w-12 ${colorClass} ${iconClass}`} />
             </div>
 
             <h3 className="text-xl font-bold text-gray-800 mb-2">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { X } from 'lucide-react';
+import { XMarkIcon } from '@heroicons/react/20/solid';
 
 export interface ModalProps {
     isOpen: boolean;
@@ -51,7 +51,7 @@ export const Modal: React.FC<ModalProps> = ({
                     className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full text-gray-400 hover:text-gray-600 transition-colors z-20 focus:outline-none focus:ring-2 focus:ring-gray-200"
                     aria-label="Fechar modal"
                 >
-                    <X size={20} />
+                    <XMarkIcon className="w-5 h-5" />
                 </button>
 
                 <div className="p-0 overflow-y-auto">

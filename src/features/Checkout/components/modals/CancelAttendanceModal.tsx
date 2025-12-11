@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check } from 'lucide-react';
+import { CheckIcon } from '@heroicons/react/20/solid';
 import { Modal } from '../../../../components/ui/Modal';
 
 interface CancelAttendanceModalProps {
@@ -45,7 +45,7 @@ export const CancelAttendanceModal: React.FC<CancelAttendanceModalProps> = ({ on
                                     }
                                 `}
                             >
-                                {selectedReason === reason.id && <Check size={18} />}
+                                {selectedReason === reason.id && <CheckIcon className="w-4.5 h-4.5" />}
                                 {reason.label}
                             </button>
                         ))}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { AlertTriangle, Info, Calendar, X } from 'lucide-react';
+import { CalendarIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { ExclamationTriangleIcon as ExclamationTriangleSolid } from '@heroicons/react/20/solid';
 
 // Domain Logic & State
 import { useServices } from './src/hooks/useServices';
@@ -282,7 +283,7 @@ const App: React.FC = () => {
                     <div className="bg-indigo-100 border-b border-indigo-200">
                         <div className="max-w-[1600px] mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
                             <div className="flex items-center gap-3 text-center sm:text-left">
-                                <div className="bg-indigo-500 rounded-full p-1 text-white flex-shrink-0"><AlertTriangle size={18} fill="white" /></div>
+                                <div className="bg-indigo-500 rounded-full p-1 text-white flex-shrink-0"><ExclamationTriangleSolid className="w-4.5 h-4.5 text-white" /></div>
                                 <p className="text-indigo-700 font-medium text-sm md:text-base">Atenção! Esse plano possui pendências financeiras e está temporariamente inativo.</p>
                             </div>
                             <button onClick={handleDelinquencyLink} className="bg-white border border-indigo-300 text-indigo-700 font-medium px-6 py-2 rounded hover:bg-indigo-50 transition-colors text-sm whitespace-nowrap shadow-sm">Enviar link de acerto</button>
@@ -293,7 +294,7 @@ const App: React.FC = () => {
                     <div className="bg-indigo-100 border-b border-indigo-200">
                         <div className="max-w-[1600px] mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
                             <div className="flex items-center gap-3 text-center sm:text-left">
-                                <Calendar className="text-indigo-600 flex-shrink-0" size={24} />
+                                <CalendarIcon className="text-indigo-600 flex-shrink-0 w-6 h-6" />
                                 <p className="text-indigo-700 font-medium">Atenção! Existe um orçamento salvo para esse pet. Clique ao lado para acessar.</p>
                             </div>
                             <button onClick={() => openModal('budgetDetails')} className="bg-white border border-indigo-300 text-indigo-600 font-medium px-6 py-2 rounded hover:bg-indigo-50 transition-colors shadow-sm">Detalhes</button>
@@ -304,12 +305,12 @@ const App: React.FC = () => {
                     <div className="bg-indigo-100 border-b border-indigo-200 animate-in fade-in slide-in-from-top duration-500">
                         <div className="max-w-[1600px] mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
                             <div className="flex items-center gap-3 text-center sm:text-left">
-                                <Calendar className="text-indigo-600 flex-shrink-0" size={24} />
+                                <CalendarIcon className="text-indigo-600 flex-shrink-0 w-6 h-6" />
                                 <p className="text-indigo-700 font-medium">Pet com atendimento agendado para dia 20/11/2025 às 14:30</p>
                             </div>
                             <div className="flex items-center gap-3">
                                 <button className="bg-white border border-indigo-300 text-indigo-600 font-medium px-6 py-2 rounded hover:bg-indigo-50 transition-colors text-sm shadow-sm">Detalhes</button>
-                                <button onClick={() => setIsBudgetScheduled(false)} className="text-indigo-400 hover:text-indigo-600 p-1"><X size={24} /></button>
+                                <button onClick={() => setIsBudgetScheduled(false)} className="text-indigo-400 hover:text-indigo-600 p-1"><XMarkIcon className="w-6 h-6" /></button>
                             </div>
                         </div>
                     </div>
@@ -340,7 +341,7 @@ const App: React.FC = () => {
                 />
             )}
 
-            <main className="max-w-[1600px] w-full mx-auto p-4 md:p-6 lg:p-8 flex-grow relative">
+            <main className="max-w-[1600px] w-full mx-auto p-4 md:p-6 flex-grow relative">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start relative">
 
                     {/* Block Interaction Layer */}
@@ -419,7 +420,7 @@ const App: React.FC = () => {
                 <LimitExceededModal service={modalService} onClose={closeModal} onSendLink={handleLimitPaymentLink} onAddToBudget={handleLimitAddToBudget} />
             )}
             {activeModal === 'noCoverage' && modalService && (
-                <NoCoverageModal service={modalService} onClose={closeModal} onSendLink={handleUpgradeLink} />
+                <NoCoverageModal service={modalService} onClose={closeModal} onUpgrade={handleUpgradeLink} onAuthorize={() => { }} />
             )}
             {activeModal === 'serviceDetails' && (
                 <ServiceDetailsModal onClose={closeModal} onAddService={closeModal} onFinalize={() => openModal('finalize')} cartItems={cartItems} />

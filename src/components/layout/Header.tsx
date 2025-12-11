@@ -1,5 +1,6 @@
 import React from 'react';
-import { User, ChevronDown, HelpCircle, LayoutDashboard } from 'lucide-react';
+import { UserIcon, QuestionMarkCircleIcon, Squares2X2Icon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
 export const Header: React.FC = () => {
     return (
@@ -10,7 +11,7 @@ export const Header: React.FC = () => {
                 <div className="flex items-center gap-8">
                     <div className="flex items-center gap-2 text-indigo-600">
                         <div className="bg-indigo-600 text-white p-1 rounded-lg">
-                            <LayoutDashboard size={20} />
+                            <Squares2X2Icon className="w-5 h-5" />
                         </div>
                         <span className="text-xl font-bold tracking-tight">WeVets</span>
                     </div>
@@ -52,7 +53,7 @@ export const Header: React.FC = () => {
                         aria-label="Ajuda e Suporte"
                         title="Ajuda"
                     >
-                        <HelpCircle size={20} />
+                        <QuestionMarkCircleIcon className="w-5 h-5" />
                     </button>
 
                     <div className="w-px h-6 bg-gray-200 hidden sm:block"></div>
@@ -63,13 +64,13 @@ export const Header: React.FC = () => {
                         aria-haspopup="true"
                     >
                         <div className="w-9 h-9 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-sm">
-                            <User size={18} />
+                            <UserIcon className="w-5 h-5" />
                         </div>
                         <div className="flex flex-col items-start hidden sm:flex">
                             <span className="text-indigo-950 font-bold text-sm leading-tight">Dr. Fernando</span>
                             <span className="text-xs text-gray-500 leading-tight">Veterinário</span>
                         </div>
-                        <ChevronDown size={16} className="text-indigo-400 group-hover:text-indigo-600 transition-colors" />
+                        <ChevronDownIcon className="w-4 h-4 text-indigo-400 group-hover:text-indigo-600 transition-colors" />
                     </button>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Printer } from 'lucide-react';
+import { PrinterIcon } from '@heroicons/react/24/outline';
 import { Modal } from '../../../../components/ui/Modal';
 import { CartItem } from '../../../../domain/models/cart.model';
 
@@ -22,7 +22,7 @@ export const ConfirmBudgetModal: React.FC<ConfirmBudgetModalProps> = ({ items, o
             maxWidth="max-w-xl"
             headerAction={
                 <button className="p-2 text-indigo-600 border border-indigo-200 rounded hover:bg-indigo-50 transition-colors">
-                    <Printer size={18} />
+                    <PrinterIcon className="w-4.5 h-4.5" />
                 </button>
             }
         >
@@ -79,5 +79,5 @@ export const ConfirmBudgetModal: React.FC<ConfirmBudgetModalProps> = ({ items, o
                 </button>
             </div>
         </Modal>
-    )
-}
+    );
+};

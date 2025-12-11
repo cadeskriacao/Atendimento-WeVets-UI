@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock } from 'lucide-react';
+import { ClockIcon } from '@heroicons/react/24/outline';
 import { Modal } from '../../../../components/ui/Modal';
 import { Service } from '../../../../domain/models/service.model';
 
@@ -19,7 +19,7 @@ export const GracePeriodModal: React.FC<GracePeriodModalProps> = ({ service, onC
             <div className="p-6 pt-2">
                 <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-6 flex gap-3 items-start">
                     <div className="bg-orange-100 p-1.5 rounded-full text-orange-600 mt-0.5">
-                        <Clock size={16} />
+                        <ClockIcon className="w-6 h-6" />
                     </div>
                     <div>
                         <h4 className="font-bold text-orange-800 text-sm mb-1">Serviço em período de carência</h4>

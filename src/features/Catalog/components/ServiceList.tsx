@@ -1,5 +1,6 @@
 import React from 'react';
-import { Search, Info, Check, X, Plus } from 'lucide-react';
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { InformationCircleIcon, CheckIcon, XMarkIcon, PlusIcon } from '@heroicons/react/20/solid';
 import { Service } from '../../../domain/models/service.model';
 import { CATEGORIES } from '../../../infrastructure/api/mockData';
 import { StatusFeedback } from '../../../components/ui/StatusFeedback';
@@ -55,12 +56,12 @@ export const ServiceList: React.FC<ServiceListProps> = ({
             aria-label="Catálogo de Serviços"
         >
             {/* Header / Search */}
-            <header className="p-6 border-b border-gray-100 bg-white sticky top-0 z-10 rounded-t-lg">
-                <div className="relative mb-6">
+            <header className="p-4 border-b border-gray-100 bg-white sticky top-0 z-10 rounded-t-lg">
+                <div className="relative mb-4">
                     <label htmlFor="search-services" className="sr-only">Buscar serviços</label>
                     <div className="relative w-full">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                            <Search size={20} />
+                            <MagnifyingGlassIcon className="w-5 h-5" />
                         </div>
                         <input
                             id="search-services"
@@ -68,7 +69,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({
                             placeholder="Buscar procedimentos, exames ou vacinas..."
                             value={searchTerm}
                             onChange={(e) => onSearchChange(e.target.value)}
-                            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all text-sm"
                         />
                     </div>
                 </div>
@@ -80,7 +81,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({
                             onClick={() => onCategoryChange(category.id)}
                             aria-current={activeCategory === category.id ? 'page' : undefined}
                             className={`
-                                px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+                                px-3 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
                                 ${activeCategory === category.id
                                     ? 'bg-indigo-600 text-white shadow-md'
                                     : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300'
@@ -89,7 +90,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({
                         >
                             {category.label}
                             {category.count > 0 && (
-                                <span className={`ml-2 text-xs py-0.5 px-1.5 rounded-full ${activeCategory === category.id ? 'bg-indigo-500 text-white' : 'bg-gray-100 text-gray-600'}`}>
+                                <span className={`ml-2 text-[10px] py-1 px-2 rounded-full ${activeCategory === category.id ? 'bg-indigo-500 text-white' : 'bg-gray-100 text-gray-600'}`}>
                                     {category.count}
                                 </span>
                             )}
@@ -99,7 +100,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({
             </header>
 
             {/* List Content */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50/50">
+            <div className="flex-1 overflow-y-auto p-3 space-y-3 bg-gray-50/50">
                 {loading ? (
                     <StatusFeedback status="loading" title="Buscando serviços" message="Carregando catálogo completo..." />
                 ) : services.length === 0 ? (
@@ -111,7 +112,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({
                                 key={service.id}
                                 onClick={() => handleServiceClick(service)}
                                 className={`
-                                    group relative border rounded-xl p-5 transition-all cursor-pointer bg-white
+                                    group relative border rounded-xl p-4 transition-all cursor-pointer bg-white
                                     ${service.disabled
                                         ? 'border-gray-100 opacity-70 hover:bg-gray-50'
                                         : 'border-gray-200 hover:border-indigo-300 hover:shadow-md hover:-translate-y-0.5'
@@ -122,7 +123,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({
                                 onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleServiceClick(service); }}
                                 aria-disabled={service.disabled}
                             >
-                                <div className="flex justify-between items-start mb-3">
+                                <div className="flex justify-between items-start mb-2">
                                     <div>
                                         <span className="text-[10px] uppercase tracking-wider font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-md mb-2 inline-block">
                                             {service.code}
@@ -140,39 +141,38 @@ export const ServiceList: React.FC<ServiceListProps> = ({
                                     </div>
                                 </div>
 
-                                {/* Tags */}
-                                <div className="flex gap-2 mb-4 flex-wrap">
-                                    {service.tags && service.tags.map((tag: any, idx: number) => (
-                                        <div
-                                            key={idx}
-                                            className={`
-                                                flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-md border
-                                                ${tag.type === 'error' ? 'bg-red-50 text-red-700 border-red-100' :
-                                                    tag.type === 'warning' ? 'bg-orange-50 text-orange-700 border-orange-100' :
-                                                        'bg-emerald-50 text-emerald-700 border-emerald-100'}
-                                            `}
-                                        >
-                                            {tag.icon === 'check' && <Check size={12} strokeWidth={3} />}
-                                            {tag.icon === 'x' && <X size={12} strokeWidth={3} />}
-                                            {tag.label}
-                                        </div>
-                                    ))}
-                                </div>
+                                {/* Footer: Tags and Actions Aligned */}
+                                <div className="mt-3 flex items-end justify-between gap-2 min-h-[32px]">
+                                    <div className="flex gap-2 flex-wrap content-end">
+                                        {service.tags && service.tags.map((tag: any, idx: number) => (
+                                            <div
+                                                key={idx}
+                                                className={`
+                                                    flex items-center gap-1.5 text-[10px] font-bold px-2 py-1 rounded-md border
+                                                    ${tag.type === 'error' ? 'bg-red-50 text-red-700 border-red-100' :
+                                                        tag.type === 'warning' ? 'bg-orange-50 text-orange-700 border-orange-100' :
+                                                            'bg-emerald-50 text-emerald-700 border-emerald-100'}
+                                                `}
+                                            >
+                                                {tag.icon === 'check' && <CheckIcon className="w-3 h-3" />}
+                                                {tag.icon === 'x' && <XMarkIcon className="w-3 h-3" />}
+                                                {tag.label}
+                                            </div>
+                                        ))}
+                                    </div>
 
-                                {/* Warning / Footer */}
-                                <div className="mt-4">
-                                    {service.warning ? (
-                                        <div className="flex items-center gap-2 text-xs text-orange-700 bg-orange-50 px-3 py-2 rounded-md w-full">
-                                            <Info size={14} className="flex-shrink-0 mt-0.5" />
-                                            <span className="font-medium">{service.warning}</span>
-                                        </div>
-                                    ) : (
-                                        <div className="flex justify-end">
+                                    <div className="flex-shrink-0">
+                                        {service.warning ? (
+                                            <div className="flex items-center gap-2 text-xs text-orange-700 bg-orange-50 px-3 py-1.5 rounded-md">
+                                                <InformationCircleIcon className="w-3.5 h-3.5 flex-shrink-0" />
+                                                <span className="font-medium">{service.warning}</span>
+                                            </div>
+                                        ) : (
                                             <span className="text-xs font-bold text-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 bg-indigo-50 px-3 py-1.5 rounded-full">
-                                                <Plus size={14} /> Adicionar
+                                                <PlusIcon className="w-3.5 h-3.5" /> Adicionar
                                             </span>
-                                        </div>
-                                    )}
+                                        )}
+                                    </div>
                                 </div>
                             </article>
                         ))}

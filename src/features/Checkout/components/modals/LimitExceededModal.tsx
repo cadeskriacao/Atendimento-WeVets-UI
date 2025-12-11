@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertTriangle } from 'lucide-react';
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import { Modal } from '../../../../components/ui/Modal';
 import { Service } from '../../../../domain/models/service.model';
 
@@ -19,7 +19,7 @@ export const LimitExceededModal: React.FC<LimitExceededModalProps> = ({ service,
             <div className="p-6 pt-2">
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex gap-3 items-start">
                     <div className="bg-red-100 p-1.5 rounded-full text-red-600 mt-0.5">
-                        <AlertTriangle size={16} />
+                        <ExclamationTriangleIcon className="w-6 h-6 text-red-600" />
                     </div>
                     <div>
                         <h4 className="font-bold text-red-800 text-sm mb-1">Limite de uso atingido</h4>

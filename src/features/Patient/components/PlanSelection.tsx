@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, Star, ArrowLeft } from 'lucide-react';
+import { CheckIcon, StarIcon, ArrowLeftIcon } from '@heroicons/react/20/solid';
 
 const PLANS = [
     { name: "WeVets Conforto", price: "129,90", features: ["Consultas ilimitadas", "Vacinas anuais", "Exames laboratoriais"], baseFeatures: "Plano Intermediário", recommended: false },
@@ -19,7 +19,7 @@ export const PlanSelection: React.FC<PlanSelectionProps> = ({ onBack }) => {
         <main className="flex flex-col items-center justify-center py-12 px-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="text-center mb-10 max-w-3xl">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 text-orange-700 border border-orange-100 text-sm font-bold mb-6">
-                    <Star size={14} fill="currentColor" /> Sem plano ativo
+                    <StarIcon className="w-3.5 h-3.5" /> Sem plano ativo
                 </div>
                 <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight leading-tight">
                     Escolha o plano ideal para<br />proteger este pet.
@@ -90,7 +90,7 @@ export const PlanSelection: React.FC<PlanSelectionProps> = ({ onBack }) => {
                                 {plan.features.map((feature, idx) => (
                                     <li key={idx} className="text-sm text-gray-600 flex items-start gap-3">
                                         <div className={`mt-0.5 p-0.5 rounded-full ${plan.recommended ? 'bg-indigo-100 text-indigo-600' : 'bg-gray-100 text-gray-400 group-hover:text-indigo-600 transition-colors'}`}>
-                                            <Check size={12} strokeWidth={3} />
+                                            <CheckIcon className="w-3 h-3" />
                                         </div>
                                         {feature}
                                     </li>
@@ -115,7 +115,7 @@ export const PlanSelection: React.FC<PlanSelectionProps> = ({ onBack }) => {
                     onClick={onBack}
                     className="flex items-center gap-2 text-gray-500 hover:text-gray-800 font-medium transition-colors px-4 py-2 hover:bg-gray-100 rounded-lg"
                 >
-                    <ArrowLeft size={16} />
+                    <ArrowLeftIcon className="w-4 h-4" />
                     Voltar para busca
                 </button>
             </div>

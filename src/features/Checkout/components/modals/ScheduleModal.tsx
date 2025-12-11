@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar as CalendarIcon, Clock } from 'lucide-react';
+import { CalendarIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { Modal } from '../../../../components/ui/Modal';
 
 interface ScheduleModalProps {
@@ -27,7 +27,7 @@ export const ScheduleModal: React.FC<ScheduleModalProps> = ({ onClose, onConfirm
                         <label className="text-sm font-medium text-gray-700">Data</label>
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                                <CalendarIcon size={18} />
+                                <CalendarIcon className="w-5 h-5 text-gray-400" />
                             </div>
                             <input
                                 type="date"
@@ -39,7 +39,7 @@ export const ScheduleModal: React.FC<ScheduleModalProps> = ({ onClose, onConfirm
                         <label className="text-sm font-medium text-gray-700">Horário</label>
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                                <Clock size={18} />
+                                <ClockIcon className="w-5 h-5 text-gray-400" />
                             </div>
                             <input
                                 type="time"
