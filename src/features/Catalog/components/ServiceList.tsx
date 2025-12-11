@@ -160,17 +160,15 @@ export const ServiceList: React.FC<ServiceListProps> = ({
                                 </div>
 
                                 {/* Warning / Footer */}
-                                <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-50">
+                                <div className="mt-4">
                                     {service.warning ? (
-                                        <div className="flex items-start gap-2 text-xs text-orange-700 bg-orange-50 px-3 py-2 rounded-md w-full">
+                                        <div className="flex items-center gap-2 text-xs text-orange-700 bg-orange-50 px-3 py-2 rounded-md w-full">
                                             <Info size={14} className="flex-shrink-0 mt-0.5" />
                                             <span className="font-medium">{service.warning}</span>
                                         </div>
                                     ) : (
-                                        <div className="w-full flex justify-end">
-                                            {/* Using standard HTML element here because it's inside a clickable card, 
-                                                avoiding nested interactive controls, but styling mimics button */}
-                                            <span className="text-xs font-semibold text-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                                        <div className="flex justify-end">
+                                            <span className="text-xs font-bold text-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 bg-indigo-50 px-3 py-1.5 rounded-full">
                                                 <Plus size={14} /> Adicionar
                                             </span>
                                         </div>
