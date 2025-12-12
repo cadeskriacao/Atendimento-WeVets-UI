@@ -26,7 +26,7 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ items, onUpdateQuantit
             <h3 className="font-bold text-gray-800">Carrinho</h3>
             {items.length > 0 && <span className="bg-gray-200 text-gray-700 text-xs font-bold px-2 py-0.5 rounded-full">{totalItems}</span>}
         </div>
-        <a href="#" className="text-indigo-600 text-xs hover:underline">Infos. importantes</a>
+        <a href="#" className="text-primary-600 text-xs hover:underline">Infos. importantes</a>
       </div>
 
       <div className="p-4 flex-grow min-h-[300px]">
@@ -41,7 +41,7 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ items, onUpdateQuantit
             {items.map(item => (
               <div key={item.id} className="bg-gray-50 rounded p-3 border border-gray-100">
                 <div className="flex items-start gap-3 mb-2">
-                  <input type="checkbox" checked className="mt-1 accent-indigo-600" readOnly />
+                  <input type="checkbox" checked className="mt-1 accent-primary-600" readOnly />
                   <div className="flex-1">
                     <div className="text-xs text-gray-500 mb-0.5">{item.code}</div>
                     <div className="font-medium text-gray-800 text-sm leading-tight mb-2">{item.name}</div>
@@ -61,22 +61,22 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ items, onUpdateQuantit
                         </div>
                     )}
                   </div>
-                  <div className="flex items-center border border-indigo-200 rounded bg-white">
+                  <div className="flex items-center border border-primary-200 rounded bg-white">
                      <button 
                         onClick={() => onUpdateQuantity(item.id, -1)}
-                        className="p-1 text-indigo-600 hover:bg-indigo-50"
+                        className="p-1 text-primary-600 hover:bg-primary-50"
                      >
                         <Minus size={14} />
                      </button>
                      <span className="text-xs font-medium w-6 text-center">{item.quantity.toString().padStart(2, '0')}</span>
                      <button 
                         onClick={() => onUpdateQuantity(item.id, 1)}
-                        className="p-1 text-indigo-600 hover:bg-indigo-50"
+                        className="p-1 text-primary-600 hover:bg-primary-50"
                      >
                         <Plus size={14} />
                      </button>
                   </div>
-                  <button onClick={() => onRemove(item.id)} className="text-indigo-400 hover:text-red-500 p-1 border border-indigo-200 rounded bg-white">
+                  <button onClick={() => onRemove(item.id)} className="text-primary-400 hover:text-red-500 p-1 border border-primary-200 rounded bg-white">
                       <Trash2 size={14} />
                   </button>
                 </div>
@@ -143,7 +143,7 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ items, onUpdateQuantit
                 <button 
                     onClick={() => onAction('finalize')}
                     disabled={items.length === 0 || hasPendingFees}
-                    className="w-full bg-indigo-600 text-white font-bold py-3 rounded hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
+                    className="w-full bg-primary-600 text-white font-bold py-3 rounded hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
                 >
                     Finalizar atendimento
                 </button>
@@ -153,26 +153,26 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ items, onUpdateQuantit
                 <button 
                     onClick={() => onAction('schedule')}
                     disabled={items.length === 0 || hasPendingFees}
-                    className="col-span-1 bg-indigo-600 text-white font-medium py-2 rounded hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
+                    className="col-span-1 bg-primary-600 text-white font-medium py-2 rounded hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
                 >
                     Agendar
                 </button>
                 <button 
                     onClick={() => onAction('quote')}
-                    className="col-span-1 bg-white border border-indigo-300 text-indigo-600 font-medium py-2 rounded hover:bg-indigo-50 transition-colors"
+                    className="col-span-1 bg-white border border-primary-300 text-primary-600 font-medium py-2 rounded hover:bg-primary-50 transition-colors"
                 >
                     Orçamento
                 </button>
                 <button 
                     onClick={() => onAction('finalize')}
                     disabled={items.length === 0 || hasPendingFees}
-                    className="col-span-1 bg-white border border-indigo-300 text-indigo-600 font-medium py-2 rounded hover:bg-indigo-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="col-span-1 bg-white border border-primary-300 text-primary-600 font-medium py-2 rounded hover:bg-primary-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                     Finalizar
                 </button>
                 <button 
                     onClick={() => onAction('cancel')}
-                    className="col-span-1 bg-white border border-indigo-300 text-indigo-600 font-medium py-2 rounded hover:bg-indigo-50 transition-colors"
+                    className="col-span-1 bg-white border border-primary-300 text-primary-600 font-medium py-2 rounded hover:bg-primary-50 transition-colors"
                 >
                     Cancelar
                 </button>

@@ -43,4 +43,4 @@ export interface Tutor {
   cpf: string;
 }
 
-export type ModalType = 'none' | 'finalize' | 'schedule' | 'details' | 'search' | 'petSelection' | 'budgetDetails' | 'anamnesis' | 'gracePeriod' | 'confirmBudget' | 'limitExceeded' | 'noCoverage' | 'serviceDetails' | 'cancelAttendance';
+export type ModalType = 'none' | 'finalize' | 'schedule' | 'details' | 'search' | 'petSelection' | 'budgetDetails' | 'anamnesis' | 'gracePeriod' | 'confirmBudget' | 'limitExceeded' | 'noCoverage' | 'serviceDetails' | 'cancelAttendance' | 'updateWeight' | 'tutorInfo' | 'upgradePlan';
