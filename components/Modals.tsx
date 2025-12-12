@@ -545,23 +545,23 @@ export const SearchModal: React.FC<SearchModalProps> = ({ onClose, onSearch, inp
     return (
         <div className="flex items-center justify-center p-4 min-h-[calc(100vh-64px)] bg-white animate-in fade-in duration-300">
             <div className="max-w-xl w-full text-center">
-                <h2 className="text-3xl font-bold text-gray-800 mb-2 tracking-tight">Novo Atendimento</h2>
-                <p className="text-gray-500 mb-10 text-lg">Localize o pet por meio do CPF do tutor</p>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2 tracking-tight">Novo Atendimento</h2>
+                <p className="text-gray-500 mb-10 text-base md:text-lg">Localize o pet por meio do CPF do tutor</p>
 
                 <div className="text-left mb-2">
                     <label className="text-sm font-bold text-gray-700 ml-1">Digite o CPF do tutor</label>
                 </div>
-                <div className="flex gap-3 mb-8">
+                <div className="flex flex-col sm:flex-row gap-3 mb-8">
                     <input
                         type="text"
                         placeholder="000.000.000-00"
-                        className="flex-1 border border-gray-300 rounded-lg px-6 py-4 text-xl focus:ring-4 focus:ring-primary-100 focus:border-primary-500 outline-none transition-all shadow-sm placeholder:text-gray-300"
+                        className="flex-1 border border-gray-300 rounded-lg px-6 py-4 text-lg md:text-xl focus:ring-4 focus:ring-primary-100 focus:border-primary-500 outline-none transition-all shadow-sm placeholder:text-gray-300"
                         value={inputValue}
                         onChange={(e) => onInputChange?.(e.target.value)}
                     />
                     <Button
                         onClick={onSearch}
-                        className="px-8 py-4 h-auto text-lg hover:shadow-lg"
+                        className="w-full sm:w-auto px-8 py-4 h-auto text-lg hover:shadow-lg justify-center"
                         leftIcon={<span>→</span>}
                     >
                         Pesquisar
@@ -1047,7 +1047,7 @@ export const AttendanceHistoryModal: React.FC<AttendanceHistoryModalProps> = ({ 
         >
             <div className="p-6 md:p-8 bg-gray-50/50 h-[80vh] overflow-y-auto">
                 {/* Filters */}
-                <Card className="mb-10 flex flex-col md:flex-row items-end gap-4" padding="md">
+                <Card className="mb-10 flex flex-col xl:flex-row items-end gap-4" padding="md">
                     <div className="flex-1 w-full">
                         <Input
                             label="Data Início"

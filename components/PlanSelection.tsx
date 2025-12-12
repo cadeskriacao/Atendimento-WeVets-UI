@@ -15,20 +15,20 @@ export const PlanSelection: React.FC<PlanSelectionProps> = ({ onBack }) => {
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 tracking-tight">
           Este pet ainda não possui um plano WeVets ativo.
         </h1>
-        <p className="text-gray-500 max-w-2xl mx-auto text-lg">
+        <p className="text-gray-500 max-w-2xl mx-auto text-base md:text-lg">
           Indique o plano mais apropriado para as necessidades do tutor e garanta seu bônus de indicação!
         </p>
       </div>
 
-      <div className="w-full max-w-[1300px] border border-gray-200 rounded-xl p-8 md:p-12 bg-white shadow-sm mb-10">
+      <div className="w-full max-w-[1300px] border border-gray-200 rounded-xl p-4 md:p-12 bg-white shadow-sm mb-10">
         {/* Toggle */}
         <div className="flex justify-center mb-8">
           <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
             <button
               onClick={() => setPeriod('anual')}
               className={`px-8 py-2.5 rounded-md font-bold transition-all ${period === 'anual'
-                  ? 'bg-white text-primary-600 shadow-sm'
-                  : 'bg-transparent text-gray-500 hover:text-primary-600'
+                ? 'bg-white text-primary-600 shadow-sm'
+                : 'bg-transparent text-gray-500 hover:text-primary-600'
                 }`}
             >
               Anual
@@ -36,8 +36,8 @@ export const PlanSelection: React.FC<PlanSelectionProps> = ({ onBack }) => {
             <button
               onClick={() => setPeriod('mensal')}
               className={`px-8 py-2.5 rounded-md font-bold transition-all ${period === 'mensal'
-                  ? 'bg-white text-primary-600 shadow-sm'
-                  : 'bg-transparent text-gray-500 hover:text-primary-600'
+                ? 'bg-white text-primary-600 shadow-sm'
+                : 'bg-transparent text-gray-500 hover:text-primary-600'
                 }`}
             >
               Mensal

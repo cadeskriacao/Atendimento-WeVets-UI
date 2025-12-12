@@ -4,7 +4,7 @@ import { Header } from './components/Header';
 import { PetHeader } from './components/PetHeader';
 import { ServiceList } from './components/ServiceList';
 import { CartSidebar } from './components/CartSidebar';
-import { Button } from './components/ui';
+import { Button, Banner } from './components/ui';
 import { MobileCartBar } from './components/MobileCartBar';
 import { PlanSelection } from './components/PlanSelection';
 import { FinalizeModal, ScheduleModal, SearchModal, PetSelectionModal, BudgetDetailsModal, AnamnesisModal, GracePeriodModal, ConfirmBudgetModal, LimitExceededModal, NoCoverageModal, ServiceDetailsModal, CancelAttendanceModal, UpdateWeightModal, TutorInfoModal, UpgradePlanModal, AttendanceHistoryModal } from './components/Modals';
@@ -373,38 +373,35 @@ const App: React.FC = () => {
             {/* Container de Banners */}
             <div className="w-full">
                 {/* Banner de Inadimplência */}
+                {/* Banner de Inadimplência */}
                 {isDelinquent && !isPlanReactivated && (
-                    <div className="bg-primary-100 border-b border-primary-200">
-                        <div className="max-w-[1600px] mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
-                            <div className="flex items-center gap-3 text-center sm:text-left">
-                                <div className="bg-primary-500 rounded-full p-1 text-white flex-shrink-0">
-                                    <AlertTriangle size={18} fill="white" />
-                                </div>
-                                <p className="text-primary-700 font-medium text-sm md:text-base">
-                                    Atenção! Esse plano possui pendências financeiras e está temporariamente inativo.
-                                    <Info size={16} className="inline ml-2 text-primary-400 cursor-pointer hover:text-primary-600" />
-                                </p>
+                    <Banner
+                        icon={
+                            <div className="bg-primary-500 rounded-full p-1 text-white flex-shrink-0">
+                                <AlertTriangle size={18} fill="white" />
                             </div>
-                            <button
+                        }
+                        action={
+                            <Button
                                 onClick={handleSendPaymentLink}
-                                className="bg-white border border-primary-300 text-primary-700 font-medium px-6 py-2 rounded hover:bg-primary-50 transition-colors text-sm whitespace-nowrap shadow-sm"
+                                variant="outline"
+                                className="border-primary-300 text-primary-700 hover:bg-primary-50 px-6 whitespace-nowrap shadow-sm"
                             >
                                 Enviar link de acerto
-                            </button>
-                        </div>
-                    </div>
+                            </Button>
+                        }
+                    >
+                        Atenção! Esse plano possui pendências financeiras e está temporariamente inativo.
+                        <Info size={16} className="inline ml-2 text-primary-400 cursor-pointer hover:text-primary-600" />
+                    </Banner>
                 )}
 
                 {/* Banner de Orçamento Salvo */}
+                {/* Banner de Orçamento Salvo */}
                 {hasSavedBudget && !isBudgetScheduled && (
-                    <div className="bg-primary-100 border-b border-primary-200">
-                        <div className="max-w-[1600px] mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
-                            <div className="flex items-center gap-3 text-center sm:text-left">
-                                <Calendar className="text-primary-600 flex-shrink-0" size={24} />
-                                <p className="text-primary-700 font-medium">
-                                    Atenção! Existe um orçamento salvo para esse pet. Clique ao lado para acessar.
-                                </p>
-                            </div>
+                    <Banner
+                        icon={<Calendar className="text-primary-600 flex-shrink-0" size={24} />}
+                        action={
                             <Button
                                 onClick={handleOpenBudgetDetails}
                                 variant="outline"
@@ -412,33 +409,30 @@ const App: React.FC = () => {
                             >
                                 Detalhes
                             </Button>
-                        </div>
-                    </div>
+                        }
+                    >
+                        Atenção! Existe um orçamento salvo para esse pet. Clique ao lado para acessar.
+                    </Banner>
                 )}
 
                 {/* Banner de Atendimento Agendado - Desativado se estivermos em atendimento médico ativo para não poluir */}
+                {/* Banner de Atendimento Agendado - Desativado se estivermos em atendimento médico ativo para não poluir */}
                 {isBudgetScheduled && !isAttendanceActive && (
-                    <div className="bg-primary-100 border-b border-primary-200 animate-in fade-in slide-in-from-top duration-500">
-                        <div className="max-w-[1600px] mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
-                            <div className="flex items-center gap-3 text-center sm:text-left">
-                                <Calendar className="text-primary-600 flex-shrink-0" size={24} />
-                                <p className="text-primary-700 font-medium">
-                                    Pet com atendimento agendado para dia 20/01/2026 às 14:30
-                                </p>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <Button
-                                    variant="outline"
-                                    className="border-primary-300 text-primary-600 hover:bg-primary-50 px-6 h-9 text-sm shadow-sm"
-                                >
-                                    Detalhes
-                                </Button>
-                                <button onClick={() => setIsBudgetScheduled(false)} className="text-primary-400 hover:text-primary-600 p-1">
-                                    <X size={24} />
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <Banner
+                        className="animate-in fade-in slide-in-from-top duration-500"
+                        icon={<Calendar className="text-primary-600 flex-shrink-0" size={24} />}
+                        action={
+                            <Button
+                                variant="outline"
+                                className="border-primary-300 text-primary-600 hover:bg-primary-50 px-6 h-9 text-sm shadow-sm"
+                            >
+                                Detalhes
+                            </Button>
+                        }
+                        onClose={() => setIsBudgetScheduled(false)}
+                    >
+                        Pet com atendimento agendado para dia 20/01/2026 às 14:30
+                    </Banner>
                 )}
             </div>
 
@@ -482,7 +476,7 @@ const App: React.FC = () => {
                 />
             )}
 
-            <main className="max-w-[1600px] w-full mx-auto p-4 md:p-6 lg:p-8 flex-grow relative">
+            <main className="max-w-[1600px] w-full mx-auto px-0 py-4 md:p-6 lg:p-8 flex-grow relative">
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start relative">
 
@@ -505,7 +499,7 @@ const App: React.FC = () => {
                             onServiceForward={handleServiceForward}
                         />
 
-                        <div className="mt-12 text-center text-xs text-gray-500">
+                        <div className="mt-12 text-center text-xs text-gray-500 px-4">
                             Faça a busca. Seus serviços aparecerão por aqui
                         </div>
                     </div>

@@ -68,11 +68,11 @@ export const ServiceList: React.FC<ServiceListProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
-      <h3 className="text-lg font-bold text-gray-800 mb-4">Selecione o serviço</h3>
+    <div className="bg-white md:rounded-lg shadow-sm border-y md:border border-gray-100 p-0 md:p-6">
+      <h3 className="text-base md:text-lg font-bold text-gray-800 mb-4 px-4 pt-4 md:px-0 md:pt-0">Selecione o serviço</h3>
 
       {/* Search and Anamnesis */}
-      <div className="flex flex-col md:flex-row gap-4 mb-6">
+      <div className="flex flex-col md:flex-row gap-4 mb-6 px-4 md:px-0">
         <div className="relative flex-1">
           <Input
             leftIcon={<Search className="text-gray-400" size={20} />}
@@ -104,7 +104,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({
       </div>
 
       {/* Categories */}
-      <div className="flex gap-8 border-b border-gray-200 mb-6 overflow-x-auto pb-1 scrollbar-hide">
+      <div className="flex gap-8 border-b border-gray-200 mb-6 overflow-x-auto pb-1 scrollbar-hide px-4 md:px-0">
         {CATEGORIES.map(cat => (
           <button
             key={cat.id}
@@ -125,7 +125,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({
       </div>
 
       {/* Header Info */}
-      <div className="bg-gray-100 p-3 rounded-t-md flex justify-between items-center text-xs font-bold text-gray-700 border-b border-gray-200">
+      <div className="bg-gray-100 p-3 md:rounded-t-md flex justify-between items-center text-xs font-bold text-gray-700 border-b border-gray-200">
         <span>
           {activeCategory === 'all' ? 'Todos os Serviços' : CATEGORIES.find(c => c.id === activeCategory)?.label || 'Serviços'}
         </span>
@@ -133,15 +133,15 @@ export const ServiceList: React.FC<ServiceListProps> = ({
       </div>
 
       {/* Services Grid */}
-      <div className="border-l border-r border-b border-gray-200 rounded-b-md divide-y divide-gray-200">
+      <div className="md:border-l md:border-r border-b border-gray-200 md:rounded-b-md divide-y divide-gray-200">
         {filteredServices.map((service) => {
           const isUnlocked = unlockedServices.includes(service.id);
 
           return (
             <div key={service.id} className="p-4 hover:bg-gray-50 transition-colors group">
-              <div className="flex justify-between items-start mb-2">
-                <div>
-                  <h4 className="font-bold text-gray-800 text-lg">
+              <div className="flex justify-between items-start mb-2 gap-4">
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-bold text-gray-800 text-base md:text-lg break-words">
                     {service.name.replace(service.category, '').trim() || service.name}
                     {service.name.startsWith(service.category) && <span className="font-normal text-gray-500 ml-1">({service.category})</span>}
                   </h4>

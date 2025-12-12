@@ -87,7 +87,7 @@ export const PetHeader: React.FC<PetHeaderProps> = ({
 
                             {/* Identity & Basic Info */}
                             <div className="lg:col-span-8 flex flex-col gap-1">
-                                <h2 className="text-lg font-bold text-gray-800 leading-tight">{pet.name}</h2>
+                                <h2 className="text-base md:text-lg font-bold text-gray-800 leading-tight">{pet.name}</h2>
                                 <div className="text-sm text-gray-600">
                                     {pet.type} - {pet.gender} {pet.weight && `- ${pet.weight}`}
                                 </div>
@@ -127,20 +127,18 @@ export const PetHeader: React.FC<PetHeaderProps> = ({
                                     </Button>
                                 </div>
 
-                                <div className="flex gap-2 mt-2">
+                                <div className="flex flex-col gap-3 mt-4">
                                     <Button
                                         variant="outline"
-                                        size="sm"
                                         onClick={onUpgradePlanClick}
-                                        className="flex-1 w-full border-primary-200 text-primary-600 hover:bg-primary-50"
+                                        className="w-full border-blue-600 text-blue-800 hover:bg-blue-50 font-bold whitespace-nowrap rounded-full"
                                     >
                                         Upgrade de plano
                                     </Button>
                                     <Button
                                         variant="outline"
-                                        size="sm"
                                         onClick={onHistoryClick}
-                                        className="flex-1 w-full border-primary-200 text-primary-600 hover:bg-primary-50"
+                                        className="w-full border-blue-600 text-blue-800 hover:bg-blue-50 font-bold whitespace-nowrap rounded-full"
                                     >
                                         Histórico
                                     </Button>
