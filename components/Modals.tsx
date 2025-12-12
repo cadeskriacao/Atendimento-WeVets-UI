@@ -18,7 +18,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title, maxWidt
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-[2px] transition-opacity animate-in fade-in duration-200">
-            <div className={`bg-white rounded-lg shadow-2xl w-full ${maxWidth} overflow-hidden animate-in zoom-in-95 duration-200 relative`}>
+            <div id="printable-content" className={`bg-white rounded-lg shadow-2xl w-full ${maxWidth} overflow-hidden animate-in zoom-in-95 duration-200 relative`}>
                 {title && (
                     <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
                         <h3 className="font-bold text-lg text-gray-800">{title}</h3>
@@ -146,7 +146,11 @@ export const ConfirmBudgetModal: React.FC<{
             title="Confirmar orçamento"
             maxWidth="max-w-xl"
             headerAction={
-                <button className="p-2 text-primary-600 border border-primary-200 rounded hover:bg-primary-50 transition-colors">
+                <button
+                    onClick={() => window.print()}
+                    className="p-2 text-primary-600 border border-primary-200 rounded hover:bg-primary-50 transition-colors"
+                    title="Imprimir / Salvar em PDF"
+                >
                     <Printer size={18} />
                 </button>
             }

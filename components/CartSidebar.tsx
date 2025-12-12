@@ -21,8 +21,8 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ items, onUpdateQuantit
     const hasPendingFees = totalAnticipation > 0 || totalLimitFee > 0;
 
     return (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-100 h-fit flex flex-col">
-            <div className="p-4 border-b border-gray-100 flex justify-between items-center">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-100 h-fit lg:max-h-[calc(100vh-7rem)] flex flex-col">
+            <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-white rounded-t-lg z-10 w-full">
                 <div className="flex items-center gap-2">
                     <h3 className="font-bold text-gray-800">Carrinho</h3>
                     {items.length > 0 && <span className="bg-gray-200 text-gray-700 text-xs font-bold px-2 py-0.5 rounded-full">{totalItems}</span>}
@@ -30,7 +30,7 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ items, onUpdateQuantit
                 <a href="#" className="text-primary-600 text-xs hover:underline">Infos. importantes</a>
             </div>
 
-            <div className="p-4 flex-grow min-h-[300px]">
+            <div className="p-4 flex-grow min-h-[300px] overflow-y-auto custom-scrollbar">
                 {items.length === 0 ? (
                     <div className="h-full flex flex-col items-center justify-center text-gray-400 py-12">
                         <ShoppingCart size={48} className="mb-3 opacity-20" />
