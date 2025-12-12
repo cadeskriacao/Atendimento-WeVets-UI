@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PLANS } from '../constants';
+import { Button } from './ui';
 
 interface PlanSelectionProps {
   onBack: () => void;
@@ -23,31 +24,29 @@ export const PlanSelection: React.FC<PlanSelectionProps> = ({ onBack }) => {
         {/* Toggle */}
         <div className="flex justify-center mb-8">
           <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
-             <button
-                onClick={() => setPeriod('anual')}
-                className={`px-8 py-2.5 rounded-md font-bold transition-all ${
-                  period === 'anual' 
-                    ? 'bg-white text-primary-600 shadow-sm' 
-                    : 'bg-transparent text-gray-500 hover:text-primary-600'
+            <button
+              onClick={() => setPeriod('anual')}
+              className={`px-8 py-2.5 rounded-md font-bold transition-all ${period === 'anual'
+                  ? 'bg-white text-primary-600 shadow-sm'
+                  : 'bg-transparent text-gray-500 hover:text-primary-600'
                 }`}
-             >
-               Anual
-             </button>
-             <button
-                onClick={() => setPeriod('mensal')}
-                className={`px-8 py-2.5 rounded-md font-bold transition-all ${
-                  period === 'mensal' 
-                    ? 'bg-white text-primary-600 shadow-sm' 
-                    : 'bg-transparent text-gray-500 hover:text-primary-600'
+            >
+              Anual
+            </button>
+            <button
+              onClick={() => setPeriod('mensal')}
+              className={`px-8 py-2.5 rounded-md font-bold transition-all ${period === 'mensal'
+                  ? 'bg-white text-primary-600 shadow-sm'
+                  : 'bg-transparent text-gray-500 hover:text-primary-600'
                 }`}
-             >
-               Mensal
-             </button>
+            >
+              Mensal
+            </button>
           </div>
         </div>
 
         <div className="text-center text-sm font-medium text-primary-600 mb-10 bg-primary-50 inline-block px-4 py-1 rounded-full mx-auto table">
-           ✨ Contratando o plano anual o cliente ganha 02 meses grátis
+          ✨ Contratando o plano anual o cliente ganha 02 meses grátis
         </div>
 
         {/* Plan Grid */}
@@ -70,20 +69,24 @@ export const PlanSelection: React.FC<PlanSelectionProps> = ({ onBack }) => {
                 </ul>
               </div>
 
-              <button className="w-full py-3 px-4 border border-primary-600 text-primary-600 font-bold rounded-lg hover:bg-primary-600 hover:text-white transition-all bg-transparent">
+              <Button
+                variant="outline"
+                className="w-full border-primary-600 text-primary-600 font-bold hover:bg-primary-600 hover:text-white"
+              >
                 Enviar oferta
-              </button>
+              </Button>
             </div>
           ))}
         </div>
       </div>
 
-      <button 
+      <Button
+        variant="ghost"
         onClick={onBack}
-        className="px-8 py-3 text-primary-600 font-bold rounded-lg hover:bg-primary-50 transition-colors"
+        className="px-8 py-3 text-primary-600 font-bold hover:bg-primary-50 text-base h-auto"
       >
         ← Voltar para busca
-      </button>
+      </Button>
     </div>
   );
 };

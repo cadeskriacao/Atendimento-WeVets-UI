@@ -43,4 +43,18 @@ export interface Tutor {
   cpf: string;
 }
 
-export type ModalType = 'none' | 'finalize' | 'schedule' | 'details' | 'search' | 'petSelection' | 'budgetDetails' | 'anamnesis' | 'gracePeriod' | 'confirmBudget' | 'limitExceeded' | 'noCoverage' | 'serviceDetails' | 'cancelAttendance' | 'updateWeight' | 'tutorInfo' | 'upgradePlan';
+export interface AttendanceHistoryItem {
+  id: string;
+  date: string;
+  time: string;
+  unit: string;
+  type: string;
+  status: 'completed' | 'cancelled' | 'in_progress';
+  vetName: string;
+  diagnosis?: string;
+  treatment?: string;
+  services: string[];
+  documents?: string[];
+}
+
+export type ModalType = 'none' | 'finalize' | 'schedule' | 'details' | 'search' | 'petSelection' | 'budgetDetails' | 'anamnesis' | 'gracePeriod' | 'confirmBudget' | 'limitExceeded' | 'noCoverage' | 'serviceDetails' | 'cancelAttendance' | 'updateWeight' | 'tutorInfo' | 'upgradePlan' | 'attendanceHistory';

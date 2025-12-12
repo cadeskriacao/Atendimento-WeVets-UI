@@ -4,9 +4,10 @@ import { Header } from './components/Header';
 import { PetHeader } from './components/PetHeader';
 import { ServiceList } from './components/ServiceList';
 import { CartSidebar } from './components/CartSidebar';
+import { Button } from './components/ui';
 import { MobileCartBar } from './components/MobileCartBar';
 import { PlanSelection } from './components/PlanSelection';
-import { FinalizeModal, ScheduleModal, SearchModal, PetSelectionModal, BudgetDetailsModal, AnamnesisModal, GracePeriodModal, ConfirmBudgetModal, LimitExceededModal, NoCoverageModal, ServiceDetailsModal, CancelAttendanceModal, UpdateWeightModal, TutorInfoModal, UpgradePlanModal } from './components/Modals';
+import { FinalizeModal, ScheduleModal, SearchModal, PetSelectionModal, BudgetDetailsModal, AnamnesisModal, GracePeriodModal, ConfirmBudgetModal, LimitExceededModal, NoCoverageModal, ServiceDetailsModal, CancelAttendanceModal, UpdateWeightModal, TutorInfoModal, UpgradePlanModal, AttendanceHistoryModal } from './components/Modals';
 import { PaymentLinkSentToast, PlanActiveToast, GracePeriodSuccessToast, LimitPurchasedToast, ForwardSuccessToast, UpgradeSuccessToast, FinalizeFeesPaidToast, AttendanceCancelledToast } from './components/Notifications';
 import { CartItem, ModalType, Service, Pet } from './types';
 import {
@@ -310,6 +311,7 @@ const App: React.FC = () => {
     const handleUpdateWeight = () => setActiveModal('updateWeight');
     const handleOpenTutorInfo = () => setActiveModal('tutorInfo');
     const handleOpenUpgradePlan = () => setActiveModal('upgradePlan');
+    const handleOpenHistory = () => setActiveModal('attendanceHistory');
 
     const handleConfirmCancellation = () => {
         setActiveModal('none');
@@ -403,12 +405,13 @@ const App: React.FC = () => {
                                     Atenção! Existe um orçamento salvo para esse pet. Clique ao lado para acessar.
                                 </p>
                             </div>
-                            <button
+                            <Button
                                 onClick={handleOpenBudgetDetails}
-                                className="bg-white border border-primary-300 text-primary-600 font-medium px-6 py-2 rounded hover:bg-primary-50 transition-colors shadow-sm"
+                                variant="outline"
+                                className="border-primary-300 text-primary-600 hover:bg-primary-50 px-6 shadow-sm"
                             >
                                 Detalhes
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 )}
@@ -420,13 +423,16 @@ const App: React.FC = () => {
                             <div className="flex items-center gap-3 text-center sm:text-left">
                                 <Calendar className="text-primary-600 flex-shrink-0" size={24} />
                                 <p className="text-primary-700 font-medium">
-                                    Pet com atendimento agendado para dia 20/11/2025 às 14:30
+                                    Pet com atendimento agendado para dia 20/01/2026 às 14:30
                                 </p>
                             </div>
                             <div className="flex items-center gap-3">
-                                <button className="bg-white border border-primary-300 text-primary-600 font-medium px-6 py-2 rounded hover:bg-primary-50 transition-colors text-sm shadow-sm">
+                                <Button
+                                    variant="outline"
+                                    className="border-primary-300 text-primary-600 hover:bg-primary-50 px-6 h-9 text-sm shadow-sm"
+                                >
                                     Detalhes
-                                </button>
+                                </Button>
                                 <button onClick={() => setIsBudgetScheduled(false)} className="text-primary-400 hover:text-primary-600 p-1">
                                     <X size={24} />
                                 </button>
@@ -472,6 +478,7 @@ const App: React.FC = () => {
                     onUpdateWeightClick={handleUpdateWeight}
                     onTutorInfoClick={handleOpenTutorInfo}
                     onUpgradePlanClick={handleOpenUpgradePlan}
+                    onHistoryClick={handleOpenHistory}
                 />
             )}
 
@@ -523,12 +530,14 @@ const App: React.FC = () => {
                     <div className="bg-white w-full max-w-lg rounded-t-xl sm:rounded-xl max-h-[85vh] flex flex-col shadow-2xl animate-in slide-in-from-bottom duration-300">
                         <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-white rounded-t-xl z-10">
                             <h3 className="font-bold text-lg text-gray-800">Seu Carrinho</h3>
-                            <button
+                            <Button
+                                variant="ghost"
+                                size="icon"
                                 onClick={() => setIsMobileCartOpen(false)}
-                                className="p-2 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full transition-colors"
+                                className="text-gray-600 hover:bg-gray-200 rounded-full h-10 w-10"
                             >
                                 <X size={20} />
-                            </button>
+                            </Button>
                         </div>
                         <div className="overflow-y-auto p-4 custom-scrollbar">
                             <CartSidebar
@@ -648,6 +657,14 @@ const App: React.FC = () => {
 
             {activeModal === 'upgradePlan' && (
                 <UpgradePlanModal
+                    onClose={() => setActiveModal('none')}
+                />
+            )}
+
+
+            {activeModal === 'attendanceHistory' && (
+                <AttendanceHistoryModal
+                    pet={activePet}
                     onClose={() => setActiveModal('none')}
                 />
             )}

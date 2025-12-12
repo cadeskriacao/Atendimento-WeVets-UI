@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search, ShoppingCart, Check, X, AlertTriangle } from 'lucide-react';
 import { Service, CartItem } from '../types';
 import { SERVICES, CATEGORIES } from '../constants';
+import { Button, Input } from './ui';
 
 interface ServiceListProps {
   onAddToCart: (service: Service) => void;
@@ -28,7 +29,9 @@ export const ServiceList: React.FC<ServiceListProps> = ({
     const matchesCategory = activeCategory === 'all' ||
       (activeCategory === 'consultas' && s.category === 'Consulta') ||
       (activeCategory === 'vacinas' && s.category === 'Vacina') ||
-      (activeCategory === 'exames' && s.category === 'Exame');
+      (activeCategory === 'exames' && s.category === 'Exame') ||
+      (activeCategory === 'cirurgias' && s.category === 'Cirurgia') ||
+      (activeCategory === 'internacao' && s.category === 'Internação');
     return matchesSearch && matchesCategory;
   });
 
@@ -71,11 +74,10 @@ export const ServiceList: React.FC<ServiceListProps> = ({
       {/* Search and Anamnesis */}
       <div className="flex flex-col md:flex-row gap-4 mb-6">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-          <input
+          <Input
+            leftIcon={<Search className="text-gray-400" size={20} />}
             type="text"
             placeholder="Pesquise por procedimento ou código"
-            className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none text-gray-700"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -83,19 +85,21 @@ export const ServiceList: React.FC<ServiceListProps> = ({
 
         {/* Anamnesis Button Toggle */}
         {!hasAnamnesis ? (
-          <button
+          <Button
             onClick={onOpenAnamnesis}
-            className="w-full md:w-auto px-6 py-2.5 bg-white border border-primary-300 text-primary-600 font-medium rounded-md hover:bg-primary-50 whitespace-nowrap"
+            variant="outline"
+            className="w-full md:w-auto border-primary-300 text-primary-600 whitespace-nowrap"
           >
             Preencher anamnese
-          </button>
+          </Button>
         ) : (
-          <button
+          <Button
             onClick={onOpenAnamnesis}
-            className="w-full md:w-auto px-6 py-2.5 bg-white border border-primary-500 text-primary-600 font-medium rounded-md hover:bg-primary-50 whitespace-nowrap"
+            variant="outline"
+            className="w-full md:w-auto border-primary-500 text-primary-600 whitespace-nowrap"
           >
             Anamnese (1)
-          </button>
+          </Button>
         )}
       </div>
 
@@ -122,7 +126,9 @@ export const ServiceList: React.FC<ServiceListProps> = ({
 
       {/* Header Info */}
       <div className="bg-gray-100 p-3 rounded-t-md flex justify-between items-center text-xs font-bold text-gray-700 border-b border-gray-200">
-        <span>Consultas</span>
+        <span>
+          {activeCategory === 'all' ? 'Todos os Serviços' : CATEGORIES.find(c => c.id === activeCategory)?.label || 'Serviços'}
+        </span>
         <span>Limite para contratação: 05 de 05</span>
       </div>
 
@@ -144,40 +150,46 @@ export const ServiceList: React.FC<ServiceListProps> = ({
 
                 {/* Action Buttons Logic */}
                 {service.actionType === 'forward' ? (
-                  <button
+                  <Button
+                    variant="outline"
+                    size="sm"
                     onClick={() => onServiceForward && onServiceForward(service)}
-                    className="px-4 py-2 bg-white border border-primary-300 text-primary-600 font-medium rounded-md hover:bg-primary-50 transition-colors text-sm"
+                    className="border-primary-300 text-primary-600 hover:bg-primary-50"
                   >
                     Encaminhar
-                  </button>
+                  </Button>
                 ) : service.actionType === 'upgrade' ? (
-                  <button
+                  <Button
+                    variant="outline"
+                    size="sm"
                     onClick={() => handleServiceClick(service)}
-                    className="px-4 py-2 bg-white border border-primary-300 text-primary-600 font-medium rounded-md hover:bg-primary-50 transition-colors text-sm"
+                    className="border-primary-300 text-primary-600 hover:bg-primary-50"
                   >
                     Ofertar troca de plano
-                  </button>
+                  </Button>
                 ) : service.actionType === 'none' ? (
-                  <button
+                  <Button
                     disabled
-                    className="p-2 rounded-md bg-gray-100 text-gray-300 border border-gray-200 cursor-not-allowed"
+                    size="icon"
+                    className="bg-gray-100 text-gray-300 border border-gray-200 cursor-not-allowed h-9 w-9 p-0"
                   >
                     <ShoppingCart size={20} />
-                  </button>
+                  </Button>
                 ) : (
-                  <button
+                  <Button
                     onClick={() => handleServiceClick(service)}
                     // Only disable if it's strictly disabled and NOT a special tag case (error tag like limit/grace/noCoverage)
                     // Error tags need to be clickable to show the modal
                     disabled={service.disabled && !service.tags.some(t => t.type === 'error')}
-                    className={`p-2 rounded-md transition-colors border
+                    size="icon"
+                    className={`h-9 w-9 p-0 transition-colors border
                           ${service.disabled && !service.tags.some(t => t.type === 'error')
                         ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
                         : 'bg-white text-primary-600 border-primary-200 hover:bg-primary-600 hover:text-white hover:border-primary-600'}
                         `}
                   >
                     <ShoppingCart size={20} />
-                  </button>
+                  </Button>
                 )}
               </div>
 

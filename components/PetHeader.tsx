@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pet, Tutor } from '../types';
 import { Calendar, Cat } from 'lucide-react';
+import { Button, Badge } from './ui';
 
 interface PetHeaderProps {
     pet: Pet;
@@ -10,6 +11,7 @@ interface PetHeaderProps {
     onUpdateWeightClick?: () => void;
     onTutorInfoClick?: () => void;
     onUpgradePlanClick?: () => void;
+    onHistoryClick?: () => void;
 }
 
 export const PetHeader: React.FC<PetHeaderProps> = ({
@@ -19,7 +21,8 @@ export const PetHeader: React.FC<PetHeaderProps> = ({
     isAttendanceActive,
     onUpdateWeightClick,
     onTutorInfoClick,
-    onUpgradePlanClick
+    onUpgradePlanClick,
+    onHistoryClick
 }) => {
 
     const calculateAge = (birthDate: string) => {
@@ -53,15 +56,17 @@ export const PetHeader: React.FC<PetHeaderProps> = ({
                         </div>
                         <span className="font-medium truncate">Pet em atendimento médico (20/11/2025 às 14:30)</span>
                         <div className="ml-auto flex gap-2 flex-shrink-0">
-                            <button className="bg-white border border-primary-200 text-primary-600 px-3 py-1 rounded text-xs font-medium hover:bg-primary-50 transition-colors">
+                            <Button variant="outline" size="sm" className="bg-white border-primary-200 text-primary-600 hover:bg-primary-50">
                                 Cancelar
-                            </button>
-                            <button
+                            </Button>
+                            <Button
+                                variant="outline"
+                                size="sm"
                                 onClick={onDetailsClick}
-                                className="bg-white border border-primary-200 text-primary-600 px-3 py-1 rounded text-xs font-medium hover:bg-primary-50 transition-colors"
+                                className="bg-white border-primary-200 text-primary-600 hover:bg-primary-50"
                             >
                                 Detalhes
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -92,25 +97,19 @@ export const PetHeader: React.FC<PetHeaderProps> = ({
                                     <span>{age} <span className="text-gray-400">({pet.birthDate})</span></span>
                                 </div>
                                 <div className="mt-2 flex flex-wrap items-center gap-2">
-                                    <button
+                                    <Button
+                                        variant="outline"
+                                        size="sm"
                                         onClick={onUpdateWeightClick}
-                                        className="px-3 py-1 border border-primary-300 text-primary-600 rounded text-xs font-bold hover:bg-primary-50 transition-colors uppercase tracking-wide"
+                                        className="text-xs uppercase tracking-wide border-primary-200 text-primary-600 hover:bg-primary-50"
                                     >
                                         Atualizar peso
-                                    </button>
-                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border border-gray-200 text-gray-600 bg-gray-50">
-                                        WeVets Conforto
-                                    </span>
-                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border border-gray-200 text-gray-600 bg-gray-50">
-                                        Coparticipação
-                                    </span>
-                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border border-gray-200 text-gray-600 bg-gray-50">
-                                        Rede Credenciada + Rede WeVets
-                                    </span>
+                                    </Button>
+                                    <Badge variant="neutral">WeVets Conforto</Badge>
+                                    <Badge variant="neutral">Coparticipação</Badge>
+                                    <Badge variant="neutral">Rede Credenciada + Rede WeVets</Badge>
                                 </div>
                             </div>
-
-
 
                             {/* Tutor & Actions - Right */}
                             <div className="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-gray-100 pt-4 lg:pt-0 lg:pl-6 flex flex-col gap-1">
@@ -118,24 +117,33 @@ export const PetHeader: React.FC<PetHeaderProps> = ({
                                 <div className="font-bold text-gray-800 text-sm">{tutor.name}</div>
                                 <div className="text-sm text-gray-600 flex items-center gap-2">
                                     {tutor.phone}
-                                    <button
+                                    <Button
+                                        variant="ghost"
+                                        size="sm"
                                         onClick={onTutorInfoClick}
-                                        className="text-xs font-bold text-primary-600 hover:text-primary-800 uppercase tracking-wide ml-2"
+                                        className="text-xs uppercase tracking-wide h-6 px-1 text-primary-600 hover:text-primary-800"
                                     >
                                         + infos
-                                    </button>
+                                    </Button>
                                 </div>
 
                                 <div className="flex gap-2 mt-2">
-                                    <button
+                                    <Button
+                                        variant="outline"
+                                        size="sm"
                                         onClick={onUpgradePlanClick}
-                                        className="flex-1 text-center px-3 py-1.5 border border-primary-300 text-primary-600 rounded text-xs font-bold hover:bg-primary-50 shadow-sm"
+                                        className="flex-1 w-full border-primary-200 text-primary-600 hover:bg-primary-50"
                                     >
                                         Upgrade de plano
-                                    </button>
-                                    <button className="flex-1 text-center px-3 py-1.5 border border-primary-300 text-primary-600 rounded text-xs font-bold hover:bg-primary-50 shadow-sm">
+                                    </Button>
+                                    <Button
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={onHistoryClick}
+                                        className="flex-1 w-full border-primary-200 text-primary-600 hover:bg-primary-50"
+                                    >
                                         Histórico
-                                    </button>
+                                    </Button>
                                 </div>
                             </div>
                         </div>
