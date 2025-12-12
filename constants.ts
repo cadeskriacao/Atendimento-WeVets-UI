@@ -25,6 +25,7 @@ export const MOCK_PETS_LIST: Pet[] = [
     birthDate: "30/06/2018",
     age: "04 anos",
     image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+    weight: "4.5kg",
     plan: "Plano Conforto",
     hasAppointment: true,
     appointmentInfo: "14/02/2024 - 14:30\nWeVets - Unidade Jardins\n3 serviço(s) - R$ 350.00"
@@ -38,6 +39,7 @@ export const MOCK_PETS_LIST: Pet[] = [
     birthDate: "15/05/2020",
     age: "02 anos",
     image: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+    weight: "3.2kg",
     plan: "Plano Conforto",
     hasAppointment: false
   }
@@ -48,9 +50,9 @@ export const MOCK_PET: Pet = MOCK_PETS_LIST[0];
 
 // Dados do Orçamento Salvo (Mock)
 export const MOCK_BUDGET_ITEMS = [
-    { name: "Consulta clínica geral", price: 50.00 },
-    { name: "Hemograma completo", price: 50.00 },
-    { name: "Vacina antirrábica", price: 50.00 }
+  { name: "Consulta clínica geral", price: 50.00 },
+  { name: "Hemograma completo", price: 50.00 },
+  { name: "Vacina antirrábica", price: 50.00 }
 ];
 
 export const PLANS = [
@@ -191,7 +193,7 @@ export const SERVICES: Service[] = [
     price: 550.00,
     copay: 0,
     actionType: 'forward',
-    disabled: true, 
+    disabled: true,
     tags: [
       { label: "Serviço indisponível", type: "error", icon: "x" }
     ]

@@ -9,30 +9,30 @@ interface NotificationProps {
 export const PaymentLinkSentToast: React.FC<NotificationProps> = ({ onClose, onAction }) => {
   return (
     <div className="fixed top-24 right-4 md:right-8 z-[60] w-full max-w-sm animate-in slide-in-from-right fade-in duration-300">
-      <div className="bg-indigo-50 border border-indigo-200 rounded-lg shadow-xl p-5 relative overflow-hidden">
+      <div className="bg-primary-50 border border-primary-200 rounded-lg shadow-xl p-5 relative overflow-hidden">
         {/* Decorative strip */}
-        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-indigo-500"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-primary-500"></div>
         
         <button 
             onClick={onClose}
-            className="absolute top-2 right-2 text-indigo-400 hover:text-indigo-600 transition-colors p-1 rounded-full hover:bg-indigo-100"
+            className="absolute top-2 right-2 text-primary-400 hover:text-primary-600 transition-colors p-1 rounded-full hover:bg-primary-100"
         >
             <X size={18} />
         </button>
         
         <div className="pl-3">
-            <h3 className="text-indigo-900 font-bold text-base mb-1 pr-6">
+            <h3 className="text-primary-900 font-bold text-base mb-1 pr-6">
                 Link enviado com sucesso
             </h3>
             
-            <p className="text-indigo-700 text-sm mb-3 leading-relaxed">
+            <p className="text-primary-700 text-sm mb-3 leading-relaxed">
                 Link de pagamento enviado ao tutor com sucesso.
             </p>
 
             {/* Simulando o botão 'Simular Pagamento' para ver o fluxo verde */}
             <button 
                 onClick={onAction}
-                className="text-xs bg-white border border-indigo-200 text-indigo-700 px-3 py-1.5 rounded font-medium hover:bg-indigo-100 transition-colors shadow-sm"
+                className="text-xs bg-white border border-primary-200 text-primary-700 px-3 py-1.5 rounded font-medium hover:bg-primary-100 transition-colors shadow-sm"
             >
                 (Simular Pagamento Realizado)
             </button>
@@ -126,22 +126,22 @@ export const LimitPurchasedToast: React.FC<NotificationProps> = ({ onClose }) =>
 export const ForwardSuccessToast: React.FC<NotificationProps> = ({ onClose }) => {
   return (
     <div className="fixed top-24 right-4 md:right-8 z-[60] w-full max-w-sm animate-in slide-in-from-right fade-in duration-300">
-      <div className="bg-indigo-50 border border-indigo-200 rounded-lg shadow-xl p-5 relative overflow-hidden">
-        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-indigo-500"></div>
+      <div className="bg-primary-50 border border-primary-200 rounded-lg shadow-xl p-5 relative overflow-hidden">
+        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-primary-500"></div>
 
         <button 
             onClick={onClose}
-            className="absolute top-2 right-2 text-indigo-400 hover:text-indigo-600 transition-colors p-1 rounded-full hover:bg-indigo-100"
+            className="absolute top-2 right-2 text-primary-400 hover:text-primary-600 transition-colors p-1 rounded-full hover:bg-primary-100"
         >
             <X size={18} />
         </button>
         
         <div className="pl-3">
-            <h3 className="text-indigo-900 font-bold text-base mb-1">
+            <h3 className="text-primary-900 font-bold text-base mb-1">
                 Encaminhamento realizado
             </h3>
             
-            <p className="text-indigo-700 text-sm leading-relaxed">
+            <p className="text-primary-700 text-sm leading-relaxed">
                 O tutor foi direcionado para a rede WeVets.
             </p>
         </div>

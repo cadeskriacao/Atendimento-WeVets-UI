@@ -27,8 +27,8 @@ export const PlanSelection: React.FC<PlanSelectionProps> = ({ onBack }) => {
                 onClick={() => setPeriod('anual')}
                 className={`px-8 py-2.5 rounded-md font-bold transition-all ${
                   period === 'anual' 
-                    ? 'bg-white text-indigo-600 shadow-sm' 
-                    : 'bg-transparent text-gray-500 hover:text-indigo-600'
+                    ? 'bg-white text-primary-600 shadow-sm' 
+                    : 'bg-transparent text-gray-500 hover:text-primary-600'
                 }`}
              >
                Anual
@@ -37,8 +37,8 @@ export const PlanSelection: React.FC<PlanSelectionProps> = ({ onBack }) => {
                 onClick={() => setPeriod('mensal')}
                 className={`px-8 py-2.5 rounded-md font-bold transition-all ${
                   period === 'mensal' 
-                    ? 'bg-white text-indigo-600 shadow-sm' 
-                    : 'bg-transparent text-gray-500 hover:text-indigo-600'
+                    ? 'bg-white text-primary-600 shadow-sm' 
+                    : 'bg-transparent text-gray-500 hover:text-primary-600'
                 }`}
              >
                Mensal
@@ -46,16 +46,16 @@ export const PlanSelection: React.FC<PlanSelectionProps> = ({ onBack }) => {
           </div>
         </div>
 
-        <div className="text-center text-sm font-medium text-indigo-600 mb-10 bg-indigo-50 inline-block px-4 py-1 rounded-full mx-auto table">
+        <div className="text-center text-sm font-medium text-primary-600 mb-10 bg-primary-50 inline-block px-4 py-1 rounded-full mx-auto table">
            ✨ Contratando o plano anual o cliente ganha 02 meses grátis
         </div>
 
         {/* Plan Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {PLANS.map((plan, index) => (
-            <div key={index} className="bg-gray-50 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-indigo-100">
+            <div key={index} className="bg-gray-50 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-primary-100">
               <h3 className="text-xl font-bold text-gray-800 mb-2">{plan.name}</h3>
-              <div className="text-2xl text-indigo-600 font-bold mb-6">R$ {plan.price} <span className="text-sm text-gray-500 font-normal">/mês</span></div>
+              <div className="text-2xl text-primary-600 font-bold mb-6">R$ {plan.price} <span className="text-sm text-gray-500 font-normal">/mês</span></div>
 
               <div className="flex-grow w-full text-left mb-8 border-t border-gray-200 pt-6">
                 {plan.baseFeatures && (
@@ -64,13 +64,13 @@ export const PlanSelection: React.FC<PlanSelectionProps> = ({ onBack }) => {
                 <ul className="space-y-3">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="text-sm text-gray-600 leading-tight flex items-start gap-2">
-                      <span className="text-indigo-400 mt-0.5">•</span> {feature}
+                      <span className="text-primary-400 mt-0.5">•</span> {feature}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <button className="w-full py-3 px-4 border border-indigo-600 text-indigo-600 font-bold rounded-lg hover:bg-indigo-600 hover:text-white transition-all bg-transparent">
+              <button className="w-full py-3 px-4 border border-primary-600 text-primary-600 font-bold rounded-lg hover:bg-primary-600 hover:text-white transition-all bg-transparent">
                 Enviar oferta
               </button>
             </div>
@@ -80,7 +80,7 @@ export const PlanSelection: React.FC<PlanSelectionProps> = ({ onBack }) => {
 
       <button 
         onClick={onBack}
-        className="px-8 py-3 text-indigo-600 font-bold rounded-lg hover:bg-indigo-50 transition-colors"
+        className="px-8 py-3 text-primary-600 font-bold rounded-lg hover:bg-primary-50 transition-colors"
       >
         ← Voltar para busca
       </button>
