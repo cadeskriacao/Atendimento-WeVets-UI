@@ -77,9 +77,13 @@ export const PetHeader: React.FC<PetHeaderProps> = ({
                     <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
                         {/* Pet Avatar */}
                         <div className="flex-shrink-0">
-                            <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 border border-gray-200">
-                                <Cat size={28} />
-                            </div>
+                            {pet.image ? (
+                                <img src={pet.image} alt={pet.name} className="w-14 h-14 rounded-full object-cover border border-gray-200" />
+                            ) : (
+                                <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 border border-gray-200">
+                                    <Cat size={28} />
+                                </div>
+                            )}
                         </div>
 
                         {/* Pet Details - Compact */}
