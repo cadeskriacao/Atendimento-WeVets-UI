@@ -15,9 +15,6 @@ export const PlanSelection: React.FC<PlanSelectionProps> = ({ onBack }) => {
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 tracking-tight">
           Este pet ainda não possui um plano WeVets ativo.
         </h1>
-        <p className="text-gray-500 max-w-2xl mx-auto text-base md:text-lg">
-          Indique o plano mais apropriado para as necessidades do tutor e garanta seu bônus de indicação!
-        </p>
       </div>
 
       <div className="w-full max-w-[1300px] border border-gray-200 rounded-xl p-4 md:p-12 bg-white shadow-sm mb-10">

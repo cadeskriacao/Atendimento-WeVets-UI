@@ -127,20 +127,20 @@ export const PetHeader: React.FC<PetHeaderProps> = ({
                                     </Button>
                                 </div>
 
-                                <div className="flex flex-col gap-3 mt-4">
+                                <div className="flex flex-col lg:flex-row gap-2 lg:gap-3 mt-4">
                                     <Button
                                         variant="outline"
                                         onClick={onUpgradePlanClick}
-                                        className="w-full border-blue-600 text-blue-800 hover:bg-blue-50 font-bold whitespace-nowrap rounded-full"
+                                        className="w-full lg:flex-1 border-blue-600 text-blue-800 hover:bg-blue-50 font-bold whitespace-nowrap rounded-full lg:h-8 lg:text-xs lg:px-3"
                                     >
                                         Upgrade de plano
                                     </Button>
                                     <Button
                                         variant="outline"
                                         onClick={onHistoryClick}
-                                        className="w-full border-blue-600 text-blue-800 hover:bg-blue-50 font-bold whitespace-nowrap rounded-full"
+                                        className="w-full lg:flex-1 border-blue-600 text-blue-800 hover:bg-blue-50 font-bold whitespace-nowrap rounded-full lg:h-8 lg:text-xs lg:px-3"
                                     >
-                                        Histórico
+                                        Histórico de atendimento
                                     </Button>
                                 </div>
                             </div>
